@@ -10,6 +10,19 @@ typedef struct {
 void insertion_sort(Student students[], int n) {
     // TODO: 在这里添加你的代码
     // I AM NOT DONE
+    for (int i = 1; i < n; i++) {
+        Student key = students[i];
+        for (int j = i-1; j >= 0; j--) {
+            if (key.score >= students[j].score) {
+                students[j+1] = students[j];
+            }
+            else {
+                students[j+1] = key;
+                break;
+            }
+
+        }
+    }
 }
 
 int main(void) {
