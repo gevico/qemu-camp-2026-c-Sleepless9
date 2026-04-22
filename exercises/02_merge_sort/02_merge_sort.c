@@ -15,7 +15,27 @@ Student temp[MAX_STUDENTS];
 
 void merge_sort(int left, int right) {
     // TODO: 在这里添加你的代码
-    // I AM NOT DONE
+    if (left >= right) return;
+
+    int len = right - left, mid = (len >> 1) + left;
+    int left_1 = left, right_1 = mid;
+    int left_2 = mid + 1, right_2 = right;
+
+    merge_sort(left_1, right_1);
+    merge_sort(left_2, right_2);
+
+    int i  = left;
+    while (left_1 <= right_1 && left_2 <= right_2) {
+        temp[i++] = students[left_1].score > students[left_2].score ? 
+                students[left_1++] : students[left_2++];
+    }
+    while (left_1 <= right_1) 
+        temp[i++] = students[left_1++];
+    while (left_2 <= right_2) 
+        temp[i++] = students[left_2++];
+    
+    for (i = left; i <= right; i++) 
+        students[i] = temp[i];
 }
 
 int main(void) {
